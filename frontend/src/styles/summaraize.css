@@ -1,1 +1,175 @@
 @import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&family=Tektur:wght@400..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --bg-color: white;
+    --t1-color: black;
+    --t3-color: white;
+    --t2-color: rgb(0,194,203);
+    --greys: rgb(142,142,147);
+    --h1-font: 24px;
+    --h2-font: 16px;
+    --h3-font: 12px;
+    --font1: 'Tektur';
+    --font2: 'Albert Sans', sans-serif;
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.navbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:30px;
+    transition:all .50s ease;
+    width:100%;
+    position:fixed;
+    background-color: white;
+    z-index: 1;
+    height:auto;
+}
+
+.name,.options{
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    flex-direction: row;
+}
+.name{
+    gap:10px;
+}
+
+.options{
+    gap:100px;
+}
+
+.logo{
+    height:50px;
+    width:55px;
+}
+
+.title{
+    font-size: var(--h1-font);
+    font-family: var(--font1);
+    font-weight: normal;
+    text-decoration:none;
+    color:var(--t1-color);
+}
+
+.nav-link{
+    font-size:var(--h2-font);
+    font-family: var(--font2);
+    font-weight: normal;
+    text-decoration:none;
+    color:var(--t1-color);
+}
+.button1{
+    width:80px;
+    height:30px;
+    border-radius: 20px;
+    background-color: var(--t2-color);
+    border-style: none;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.nav-link2{
+    font-size:var(--h2-font);
+    font-family: var(--font2);
+    font-weight: normal;
+    text-decoration:none;
+    color:var(--t3-color);
+}
+
+.theme-switch svg{
+    height:20px;
+    width:20px;
+    color:var(--t2-color);
+}
+
+.menu svg{
+    height:30px;
+    width:30px;
+    color:var(--t2-color);
+}
+
+.theme-switch{
+    background-color: transparent;
+    border:none;
+    border-radius: 50%;
+    height:45px;
+    width:45px;
+    padding:0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0,0.5);
+    cursor:pointer;
+}
+
+.menu{
+    display:none;
+    cursor:pointer;
+}
+
+@media screen and (max-width: 900px) {
+    .nav-link,.button1{
+        display:none;
+    }
+
+    .menu{
+        display:block;
+    }
+}
+
+@media screen and (max-width: 592px) {
+    .options{
+        display:none;
+    }
+
+    .menu{
+        display:block;
+    }
+}
+
+/* FOOTER */
+
+.footer{
+    background-color: var(--t2-color);
+    position:fixed;
+    width:100%;
+    height:150px;
+    bottom:0;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:0px 60px 0px;
+}
+
+.links{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap:10px;
+}
+.links svg{
+    width:40px;
+    height:40px;
+    color:var(--t3-color);
+}
+
+.info{
+    font-family: var(--font2);
+    font-size: var(--h2-font);
+    color:var(--t3-color);
+    font-weight: bold;
+}
