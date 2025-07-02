@@ -7,13 +7,17 @@ import '../styles/summaraize.css';
 export default function MainPage() {
     const[text,setText]=useState('');
 
+    const charCountStyle = {
+        color: text.length > 4000 ? '#DC143C' : 'inherit',
+    };
+
     return (
         <>
         <Header />
         <div className="begin">
             <div className="text-input">
-                <textarea  value={text} onChange={(c)=> setText(c.target.value)} placeholder="Enter or paste your text here" maxLength={4000}></textarea>
-                <div className="char-count">{text.length}/4000 characters</div>
+                <textarea  value={text} onChange={(c)=> setText(c.target.value)} placeholder="Enter or paste your text here" ></textarea>
+                <div className="char-count" style={charCountStyle}>{text.length}/4000 characters</div>
             </div>
             <div className="summary-modes">
                 <label><input type="radio" name="mode" className="mode-btn" value="academic" />Academic</label>
