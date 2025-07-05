@@ -8,7 +8,7 @@
     --bg-color: white;
     --t1-color: black;
     --t3-color: white;
-    --t2-color: rgb(4, 169, 177);
+    --t2-color: rgb(0,194,203);
     --box-color:white;
     --greys: rgb(142,142,147);
     --h1-font: 24px;
@@ -22,7 +22,7 @@
     --bg-color: #121212;
     --t1-color: white;
     --t3-color: black;
-    --t2-color: rgb(4, 169, 177);
+    --t2-color: rgb(0, 177, 186);
     --box-color:#1E1E1E;
     --greys: rgb(142,142,147);
     --h1-font: 24px;
@@ -32,7 +32,7 @@
     --font2: 'Albert Sans', sans-serif;
 }
 
-html {
+body{
   background-color: var(--bg-color);
 }
 
@@ -70,9 +70,10 @@ html {
     gap:100px;
 }
 
-.logo{
+.name svg{
     height:50px;
     width:55px;
+    color:var(--bg-color)
 }
 
 .title{
@@ -116,7 +117,7 @@ html {
     background-color: transparent;
 }
 
-.theme-switch svg{
+.ts-icon{
     height:20px;
     width:20px;
     color:var(--t2-color);
@@ -129,7 +130,8 @@ html {
 }
 
 .theme-switch{
-    background-color: transparent;
+    background-color: var(--box-color);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     border:none;
     border-radius: 50%;
     height:40px;
@@ -138,7 +140,6 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 5px 10px rgba(0, 0, 0,0.5);
     cursor:pointer;
 }
 
@@ -321,7 +322,7 @@ label:hover{
 }
 
 .summaraize:hover{
-    background-color: var(--t3-color);
+    background-color: var(--bg-color);
     border-color: var(--t2-color);
     color:var(--t2-color);
 }
@@ -392,6 +393,7 @@ label:hover{
 }
 
 
+
 .how-to h2,.features h2{
     color: var(--t2-color);
     font-size: var(--h1-font);
@@ -417,9 +419,10 @@ label:hover{
     gap:10px;
 }
 
-.points img{
+.points svg{
     width:50px;
     height:50px;
+    color: var(--bg-color);
 }
 
 .points p{
@@ -450,8 +453,15 @@ label:hover{
     font-family: var(--font2);
     font-size: var(--h2-font);
     width:100%;
+    background-color: var(--box-color);
 
 }
+
+.feature:hover {
+  transform: scale(1.03);
+  transition: all 0.3s ease;
+}
+
 
 .f-title{
     display: flex;
@@ -459,7 +469,7 @@ label:hover{
     justify-content: space-between;
     gap:20px;
     font-weight: bold;
-    
+    cursor: pointer;
 }
 
 .f-info.active{
@@ -480,6 +490,9 @@ label:hover{
 
 }
 
+.icon{
+    color:var(--t1-color);
+}
 /*MEDIA QUERIES*/
 
 @media screen and (max-width: 900px) {
