@@ -1,1 +1,1 @@
-Site Link: https://swanik.netlify.app/
+Site Link: https://summaraize-ai.netlify.app/
