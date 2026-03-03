@@ -1,34 +1,36 @@
 const axios = require("axios");
-const { HF_API_KEY } = require("../config/env");
 
-async function generateSummary({ text, prompt }) {
+async function generateSummary({ prompt }) {
   try {
     const response = await axios.post(
-      "https://router.huggingface.co/hf-inference/models/facebook/bart-large-cnn",
+      "https://api.groq.com/openai/v1/chat/completions",
       {
-        inputs: prompt || text,
-        parameters: {
-          max_length: 150,
-          min_length: 40,
-          do_sample: false
-        },
-        options: {
-          wait_for_model: true
-        }
+        model: "llama3-8b-8192",
+        messages: [
+          {
+            role: "system",
+            content: "You are a helpful AI that summarizes text clearly and accurately."
+          },
+          {
+            role: "user",
+            content: prompt
+          }
+        ],
+        temperature: 0.5,
+        max_tokens: 500
       },
       {
         headers: {
-          Authorization: `Bearer ${HF_API_KEY}`,
-          "Content-Type": "application/json",
-        },
-        timeout: 100000
+          Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
+          "Content-Type": "application/json"
+        }
       }
     );
 
-    return response.data[0]?.summary_text;
+    return response.data.choices[0].message.content;
 
   } catch (error) {
-    console.error("AI SERVICE ERROR:", error.message);
+    console.error("GROQ ERROR:", error.response?.data || error.message);
     throw new Error("AI provider failed");
   }
 }
