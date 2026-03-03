@@ -1,3 +1,16 @@
+const express = require("express");
+const cors = require("cors");
+const dotenv = require("dotenv");
+const axios = require("axios");
+
+dotenv.config();
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+const HF_API_KEY = process.env.HF_API_KEY;
+
 app.post("/summarize", async (req, res) => {
   const { text } = req.body;
 
@@ -43,4 +56,9 @@ app.post("/summarize", async (req, res) => {
 
     res.status(500).json({ error: "AI service failed" });
   }
+});
+
+const PORT = process.env.PORT || 3002;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
