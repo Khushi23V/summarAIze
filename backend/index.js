@@ -18,13 +18,20 @@ app.post("/summarize", async (req, res) => {
     return res.status(400).json({ error: "Text and mode required" });
   }
 
-  const prompt = `Summarize the following text in a ${mode} tone:\n\n${text}`;
+  const prompt = `Give a summary of 10 sentences for the given text in a ${mode} tone:\n\n${text}`;
 
   try {
     const response = await axios.post(
-      "https://api-inference.huggingface.co/models/facebook/bart-large-cnn",
+      "https://router.huggingface.co/hf-inference/models/facebook/bart-large-cnn",
       {
         inputs: prompt,
+    parameters: {
+      max_length: 200,      
+      min_length: 60,      
+      do_sample: false,     
+      num_beams: 4,         
+      temperature: 0.7     
+    }
       },
       {
         headers: {
@@ -42,7 +49,7 @@ app.post("/summarize", async (req, res) => {
   }
 });
 
-const PORT = 3002;
+const PORT = process.env.PORT || 3002;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
