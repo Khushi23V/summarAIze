@@ -5,14 +5,14 @@ const { generateSummary } = require("../services/ai.service");
 const { buildPrompt } = require("../utils/prompt");
 
 router.post("/", async (req, res) => {
-  const { text, tone } = req.body;
+  const { text, mode } = req.body;
 
   if (!text) {
     return res.status(400).json({ error: "Text is required" });
   }
 
   try {
-    const prompt = buildPrompt({ text, tone: tone || "neutral" });
+    const prompt = buildPrompt({ text, mode: mode || "neutral" });
 
     const summary = await generateSummary({ text, prompt });
 
@@ -22,5 +22,6 @@ router.post("/", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
 
 module.exports = router;
