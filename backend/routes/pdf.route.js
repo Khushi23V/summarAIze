@@ -16,7 +16,7 @@ router.post("/", upload.single("file"), async (req, res) => {
   }
 
   try {
-    const text = await pdfToText(req.file.buffer);
+    const text = await PdfToText(req.file.buffer);
 
     const prompt = buildPrompt({
       text,
@@ -33,5 +33,6 @@ router.post("/", upload.single("file"), async (req, res) => {
     res.status(500).json({ error: "Failed to summarize PDF" });
   }
 });
+
 
 module.exports = router;
