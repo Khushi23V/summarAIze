@@ -22,6 +22,7 @@ router.post("/", async (req, res) => {
     res.json({ summary });
 
   } catch (err) {
+    console.error("URL SUMMARY ERROR:", err);
     res.status(500).json({ error: "Failed to summarize URL" });
   }
 });
