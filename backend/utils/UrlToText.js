@@ -15,8 +15,9 @@ async function UrlToText(url) {
   const reader = new Readability(dom.window.document);
   const article = reader.parse();
 
-  return article?.textContent || "";
+  return article?.textContent.slice(0, 6000) || "";
 }
 
 
 module.exports = { UrlToText };
+
